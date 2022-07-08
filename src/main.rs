@@ -1,6 +1,5 @@
 mod problem;
-use problem::q1018;
 
 fn main() {
-    q1018::solve();
+    problem::q1436::solve();
 }
