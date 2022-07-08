@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 pub fn solve() {
     let v: Vec<i32> = get_line().split_whitespace().map(|x| x.parse().unwrap()).collect();
 
