@@ -1,6 +1,7 @@
 use std::io::prelude::*;
 // use std::{thread, time};
 
+#[allow(dead_code)]
 pub fn solve() {
     let mut buf = String::new();
     std::io::stdin().read_to_string(&mut buf).unwrap();
