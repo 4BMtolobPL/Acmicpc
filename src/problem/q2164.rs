@@ -1,5 +1,6 @@
 use std::io::stdin;
 
+#[allow(dead_code)]
 pub fn solve() {
     let mut buf = String::new();
     stdin().read_line(&mut buf).unwrap();
