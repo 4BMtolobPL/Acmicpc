@@ -9,3 +9,5 @@ pub mod q1966;
 pub mod q1978;
 pub mod q2108;
 pub mod q2164;
+pub mod q2231;
+pub mod q2292;
