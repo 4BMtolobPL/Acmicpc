@@ -24,3 +24,4 @@ pub mod q11050;
 pub mod q11650;
 pub mod q11866;
 pub mod q10845;
+pub mod q10866;
