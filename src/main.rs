@@ -1,5 +1,5 @@
 mod problem;
 
 fn main() {
-    problem::q11866::solve();
+    problem::q10845::solve();
 }
