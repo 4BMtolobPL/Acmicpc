@@ -1,5 +1,5 @@
-use std::io::{stdin, BufReader, BufRead, BufWriter, stdout};
 use std::io::prelude::*;
+use std::io::{stdin, stdout, BufRead, BufReader, BufWriter};
 
 #[allow(dead_code)]
 pub fn solve() {
@@ -18,14 +18,24 @@ pub fn solve() {
         let mut line = String::new();
         reader.read_line(&mut line).unwrap();
         let mut iter = line.split_whitespace();
-        
+
         match iter.next().unwrap() {
-            "push" => {v.push(iter.next().unwrap().to_string());},
-            "pop" => {writeln!(writer, "{}", pop(&mut v)).unwrap();},
-            "size" => {writeln!(writer, "{}", v.len()).unwrap();},
-            "empty" => {writeln!(writer, "{}", if v.is_empty() {1} else {0}).unwrap();},
-            "top" => {writeln!(writer, "{}", top(&v)).unwrap();},
-            _ => {},
+            "push" => {
+                v.push(iter.next().unwrap().to_string());
+            }
+            "pop" => {
+                writeln!(writer, "{}", pop(&mut v)).unwrap();
+            }
+            "size" => {
+                writeln!(writer, "{}", v.len()).unwrap();
+            }
+            "empty" => {
+                writeln!(writer, "{}", if v.is_empty() { 1 } else { 0 }).unwrap();
+            }
+            "top" => {
+                writeln!(writer, "{}", top(&v)).unwrap();
+            }
+            _ => {}
         };
     }
 }
@@ -37,7 +47,7 @@ fn pop(v: &mut Vec<String>) -> String {
     }
 }
 
-fn top(v: &Vec<String>) -> &str {
+fn top(v: &[String]) -> &str {
     match v.last() {
         Some(x) => x,
         None => "-1",

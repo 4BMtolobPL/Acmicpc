@@ -16,9 +16,9 @@ pub fn solve() {
 
     let stdout = stdout();
     let mut out = BufWriter::new(stdout.lock());
-    for i in 0..10001 {
-        for _ in 0..v[i] {
-            writeln!(out, "{}", i).unwrap();
+    for (index, &value) in v.iter().enumerate() {
+        for _ in 0..value {
+            writeln!(out, "{}", index).unwrap();
         }
     }
 }

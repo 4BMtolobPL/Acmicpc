@@ -27,11 +27,9 @@ fn is_palindrome(line: &str) -> bool {
         }
     }
 
-    if line.len() % 2 == 1 {
-        if lh.next().unwrap() != rh.next().unwrap() {
-            return false;
-        }
+    if line.len() % 2 == 1 && lh.next().unwrap() != rh.next().unwrap() {
+        return false;
     }
 
-    return true;
+    true
 }

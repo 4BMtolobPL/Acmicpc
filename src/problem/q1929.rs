@@ -1,3 +1,4 @@
+use std::fmt::Write;
 use std::io;
 
 #[allow(dead_code)]
@@ -21,9 +22,9 @@ pub fn solve() {
     }
 
     let mut out = String::new();
-    for i in m..=n {
-        if primearray[i] {
-            out.push_str(&format!("{}\n", i));
+    for (index, value) in primearray.iter().enumerate().take(n + 1).skip(m) {
+        if *value {
+            writeln!(out, "{}", index).unwrap();
         }
     }
 

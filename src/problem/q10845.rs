@@ -18,11 +18,10 @@ pub fn solve() {
             Some(x) => match *x {
                 "push" => queue.push_back(order[1]),
                 "pop" => {
-                    let a;
-                    match queue.pop_front() {
-                        Some(x) => a = x.to_string(),
-                        None => a = "-1".to_string(),
-                    }
+                    let a = match queue.pop_front() {
+                        Some(x) => x.to_string(),
+                        None => "-1".to_string(),
+                    };
                     out.push(a);
                 }
                 "size" => {
@@ -35,19 +34,17 @@ pub fn solve() {
                     "0".to_string()
                 }),
                 "front" => {
-                    let a;
-                    match queue.front() {
-                        Some(x) => a = x.to_string(),
-                        None => a = "-1".to_string(),
-                    }
+                    let a = match queue.front() {
+                        Some(x) => x.to_string(),
+                        None => "-1".to_string(),
+                    };
                     out.push(a);
                 }
                 "back" => {
-                    let a;
-                    match queue.back() {
-                        Some(x) => a = x.to_string(),
-                        None => a = "-1".to_string(),
-                    }
+                    let a = match queue.back() {
+                        Some(x) => x.to_string(),
+                        None => "-1".to_string(),
+                    };
                     out.push(a);
                 }
                 _ => continue,

@@ -20,8 +20,8 @@ fn josephus(n: usize, k: usize) {
         list.push_back(i);
     }
 
-    while list.len() > 0 {
-        for _ in 0..(k-1) {
+    while !list.is_empty() {
+        for _ in 0..(k - 1) {
             let front_element = list.pop_front().unwrap();
             list.push_back(front_element);
         }

@@ -1,12 +1,15 @@
 #[allow(dead_code)]
 pub fn solve() {
-    let v: Vec<i32> = get_line().split_whitespace().map(|x| x.parse().unwrap()).collect();
+    let v: Vec<i32> = get_line()
+        .split_whitespace()
+        .map(|x| x.parse().unwrap())
+        .collect();
 
     let mut board: Vec<String> = Vec::new();
     for _ in 0..v[0] {
         board.push(get_line());
     }
-    
+
     board_check(board);
 }
 
@@ -20,9 +23,9 @@ fn board_check(lines: Vec<String>) {
     let mut min = i32::MAX;
     for row in 0..(lines.len() - 7) {
         for char_index in 0..(lines[row].len() - 7) {
-            let mut v:Vec<String> = Vec::new();
-            for i in row..(row + 8) {
-                v.push(lines[i].chars().skip(char_index).take(8).collect());
+            let mut v: Vec<String> = Vec::new();
+            for item in lines.iter().skip(row).take(8) {
+                v.push(item.chars().skip(char_index).take(8).collect());
             }
             min = min.min(lines_check(v));
         }
@@ -35,7 +38,6 @@ fn lines_check(lines: Vec<String>) -> i32 {
     let b = "BWBWBWBW";
     let start_w = format!("{}{}{}{}{}{}{}{}", w, b, w, b, w, b, w, b);
     let start_b = format!("{}{}{}{}{}{}{}{}", b, w, b, w, b, w, b, w);
-
 
     let line = lines.join("");
 

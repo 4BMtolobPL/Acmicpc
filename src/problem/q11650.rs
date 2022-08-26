@@ -1,3 +1,4 @@
+use std::fmt::Write;
 use std::io::{stdin, Read};
 
 #[allow(dead_code)]
@@ -22,7 +23,7 @@ pub fn solve() {
 
     let mut out = String::new();
     for i in v {
-        out.push_str(&format!("{} {}\n", i.0, i.1));
+        writeln!(out, "{} {}", i.0, i.1).unwrap();
     }
 
     println!("{}", out.trim());
