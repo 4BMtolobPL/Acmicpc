@@ -10,15 +10,21 @@ pub fn solve() {
 
     for _ in 0..testcase {
         let targetline = lines.next().unwrap();
-        let target: usize = targetline.split_whitespace().skip(1).next().unwrap().parse().unwrap();
+        let target: usize = targetline
+            .split_whitespace()
+            .nth(1)
+            .unwrap()
+            .parse()
+            .unwrap();
 
-        let queue: Vec<i32> = lines.next().unwrap().split_whitespace().map(|x| x.parse().unwrap()).collect();
+        let queue: Vec<i32> = lines
+            .next()
+            .unwrap()
+            .split_whitespace()
+            .map(|x| x.parse().unwrap())
+            .collect();
         println!("{}", func(target, &queue));
     }
-
-
-
-
 }
 
 fn func(target: usize, queue: &Vec<i32>) -> i32 {
@@ -28,7 +34,7 @@ fn func(target: usize, queue: &Vec<i32>) -> i32 {
         let x = hashmap.entry(*value).or_insert(0);
         *x += 1;
     }
-    let mut keys: Vec<&i32> = hashmap.keys().map(|x| x).collect();
+    let mut keys: Vec<&i32> = hashmap.keys().collect();
     keys.sort_by(|a, b| b.cmp(a));
 
     let mut queue_iter = queue.iter().enumerate().cycle();

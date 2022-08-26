@@ -13,13 +13,11 @@ pub fn solve() {
         for c in line.chars() {
             if c == '(' {
                 stack.push(c);
+            } else if let Some(&'(') = stack.last() {
+                stack.pop();
             } else {
-                if let Some(&'(') = stack.last() {
-                    stack.pop();
-                } else {
-                    stack.push(c);
-                    break;
-                }
+                stack.push(c);
+                break;
             }
         }
         if stack.is_empty() {
