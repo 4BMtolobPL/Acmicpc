@@ -79,3 +79,6 @@ pub mod q9012;
 pub mod q9095;
 pub mod q9375;
 pub mod q9461;
+pub mod q1107;
+pub mod q5430;
+pub mod q7569;

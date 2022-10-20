@@ -2,13 +2,19 @@
 pub fn solve() {
     let mut buf = String::new();
     std::io::stdin().read_line(&mut buf).unwrap();
-    let mut target: i32 = buf.trim().parse().unwrap();
-    let mut now = 0;
-    while target > 0 {
-        now += 1;
-        if now.to_string().contains("666") {
-            target -= 1;
+    let target: usize = buf.trim().parse().unwrap();
+
+    let mut v = Vec::with_capacity(10000);
+    for i in 666..2666800 {
+        let mut j = i;
+        while j > 665 {
+            if j % 1000 == 666 {
+                v.push(i);
+                break;
+            } else {
+                j /= 10;
+            }
         }
     }
-    println!("{}", now);
+    println!("{}", v[target - 1]);
 }

@@ -1,31 +1,28 @@
-use std::{io::{Read, stdin}, collections::HashSet};
+use std::io::{stdin, Read};
 
 #[allow(dead_code)]
 pub fn solve() {
     let mut buf = String::new();
     stdin().read_to_string(&mut buf).unwrap();
 
-    let v: Vec<usize> = buf.split_whitespace().skip(1).map(|x| x.parse().unwrap()).collect();
-    let primes = get_primes(1000);
+    let v: Vec<usize> = buf
+        .split_whitespace()
+        .skip(1)
+        .map(|x| x.parse().unwrap())
+        .collect();
 
-    println!("{}", v.iter().filter(|x| primes.contains(*x)).count());
-}
-
-fn get_primes(rhs: usize) -> HashSet<usize> {
-    let mut nums = vec![true; rhs + 1];
-    for i in 2..=32 {
-        if nums[i] {
-            for j in ((i * i)..=rhs).step_by(i) {
-                nums[j] = false;
+    const TOP: usize = 1000;
+    let sqrt = (TOP as f64).sqrt() as usize;
+    let mut primes = [true; TOP + 1];
+    primes[0] = false;
+    primes[1] = false;
+    for i in 2..=(sqrt + 1) {
+        if primes[i] {
+            for j in ((i * i)..=TOP).step_by(i) {
+                primes[j] = false;
             }
         }
     }
 
-    let mut primes = HashSet::new();
-    for (index, value) in nums.iter().enumerate().skip(2) {
-        if *value {
-            primes.insert(index);
-        }
-    }
-    primes
+    println!("{}", v.into_iter().filter(|&x| primes[x]).count());
 }
