@@ -1,4 +1,7 @@
-use std::{io::{stdin, Read}, collections::VecDeque, fmt::format};
+use std::{
+    collections::VecDeque,
+    io::{stdin, Read},
+};
 
 pub fn solve() {
     let mut buf = String::new();
@@ -10,41 +13,37 @@ pub fn solve() {
     for _ in 0..test_case {
         let (src, dst) = (numbers.next().unwrap(), numbers.next().unwrap());
         if src == dst {
-            println!("");
+            println!();
             continue;
         }
 
-        let mut queue = VecDeque::from([(src, String::new())]);
+        let mut queue = VecDeque::new();
+        queue.push_back((src, Vec::new()));
         let mut visited = [false; 10000];
         visited[src] = true;
-        let commands = ['D', 'S', 'L', 'R'];
 
-        let mut counter = 0;
-        while let Some((x, command)) = queue.pop_front() {
-            println!("queue: {:?}", queue);
-            let nexts = [(x * 2) % 10000,
-            if x == 0 {9999} else {x - 1},
-            (x * 10) % 10000 + (x / 1000),
-            (x % 10) * 1000 + (x / 10)];
-            println!("nexts: {:?}", nexts);
+        let closer = |x| {
+            [
+                (x * 2) % 10000,
+                if x == 0 { 9999 } else { x - 1 },
+                (x * 10) % 10000 + (x / 1000),
+                (x % 10) * 1000 + (x / 10),
+            ]
+        };
 
-            if counter > 3 {
-                break;
-            }
-            counter += 1;
+        let commands = ['D' as u8, 'S' as u8, 'L' as u8, 'R' as u8];
 
-            for index in 0..4 {
-                if !visited[nexts[index]] {
-                    if nexts[index] == dst {
-                        println!("{}{}", command, commands[index]);
-                        queue.clear();
-                    } else {
-                        visited[nexts[index]] = true;
-                        queue.push_back((nexts[index], format!("{}{}", command, commands[index])));
-                        continue;
-                    }
+        'outer: while let Some((value, command)) = queue.pop_front() {
+            for (index, next) in closer(value).into_iter().enumerate() {
+                if next == dst {
+                    println!("{}{}", String::from_utf8(command).unwrap(), commands[index] as char);
+                    break 'outer;
+                } else if !visited[next] {
+                    visited[next] = true;
+                    let mut c = command.clone();
+                    c.push(commands[index]);
+                    queue.push_back((next, c));
                 }
-                break;
             }
         }
     }
