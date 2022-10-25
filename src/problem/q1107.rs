@@ -54,9 +54,5 @@ fn is_pressable(buttons: &[bool; 10], i: usize) -> bool {
         }
         a /= 10;
     }
-    if buttons[a] {
-        true
-    } else {
-        false
-    }
+    buttons[a]
 }
