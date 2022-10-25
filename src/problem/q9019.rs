@@ -36,7 +36,11 @@ pub fn solve() {
         'outer: while let Some((value, command)) = queue.pop_front() {
             for (index, next) in closer(value).into_iter().enumerate() {
                 if next == dst {
-                    println!("{}{}", String::from_utf8(command).unwrap(), commands[index] as char);
+                    println!(
+                        "{}{}",
+                        String::from_utf8(command).unwrap(),
+                        commands[index] as char
+                    );
                     break 'outer;
                 } else if !visited[next] {
                     visited[next] = true;
