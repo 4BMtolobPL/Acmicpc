@@ -5,11 +5,6 @@ pub fn solve() {
     let mut buf = String::new();
     stdin().read_to_string(&mut buf).unwrap();
 
-    let v = buf
-        .split_whitespace()
-        .skip(1)
-        .map(|x| x.parse::<usize>().unwrap());
-
     const TOP: usize = 1000;
     let sqrt = (TOP as f64).sqrt() as usize;
     let mut primes = [true; TOP + 1];
@@ -23,5 +18,12 @@ pub fn solve() {
         }
     }
 
-    println!("{}", v.filter(|&x| primes[x]).count());
+    println!(
+        "{}",
+        buf.split_whitespace()
+            .skip(1)
+            .map(|x| x.parse::<usize>().unwrap())
+            .filter(|&x| primes[x])
+            .count()
+    );
 }
