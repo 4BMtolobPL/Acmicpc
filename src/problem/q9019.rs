@@ -1,6 +1,7 @@
+use std::io::Write;
 use std::{
     collections::VecDeque,
-    io::{stdin, Read},
+    io::{stdin, stdout, BufWriter, Read},
 };
 
 pub fn solve() {
@@ -10,6 +11,9 @@ pub fn solve() {
 
     let test_case: usize = numbers.next().unwrap();
 
+    let stdout = stdout();
+    let mut out = BufWriter::new(stdout);
+
     for _ in 0..test_case {
         let (src, dst) = (numbers.next().unwrap(), numbers.next().unwrap());
         if src == dst {
@@ -18,11 +22,11 @@ pub fn solve() {
         }
 
         let mut queue = VecDeque::new();
-        queue.push_back((src, Vec::new()));
-        let mut visited = [false; 10000];
-        visited[src] = true;
+        queue.push_back(src);
+        let mut visited = [None; 10000];
+        visited[src] = Some((src, ' '));
 
-        let closer = |x| {
+        let nexts = |x| {
             [
                 (x * 2) % 10000,
                 if x == 0 { 9999 } else { x - 1 },
@@ -31,20 +35,26 @@ pub fn solve() {
             ]
         };
 
-        let commands = ['D' as u8, 'S' as u8, 'L' as u8, 'R' as u8];
+        let commands = ['D', 'S', 'L', 'R'];
 
-        'outer: while let Some((value, command)) = queue.pop_front() {
-            for (index, next) in closer(value).into_iter().enumerate() {
-                if next == dst {
-                    println!("{}{}", String::from_utf8(command).unwrap(), commands[index] as char);
-                    break 'outer;
-                } else if !visited[next] {
-                    visited[next] = true;
-                    let mut c = command.clone();
-                    c.push(commands[index]);
-                    queue.push_back((next, c));
+        while let Some(value) = queue.pop_front() {
+            for (index, next) in nexts(value).into_iter().enumerate() {
+                if visited[next].is_none() {
+                    visited[next] = Some((value, commands[index]));
+                    queue.push_back(next);
                 }
             }
+            if visited[dst].is_some() {
+                break;
+            }
         }
+
+        let mut v = Vec::new();
+        let mut from = dst;
+        while from != src {
+            v.push(visited[from].unwrap().1);
+            from = visited[from].unwrap().0;
+        }
+        writeln!(out, "{}", v.iter().rev().collect::<String>()).unwrap();
     }
 }
