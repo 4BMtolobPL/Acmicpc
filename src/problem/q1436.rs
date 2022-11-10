@@ -1,5 +1,4 @@
-#[allow(dead_code)]
-pub fn solve() {
+fn main() {
     let mut buf = String::new();
     std::io::stdin().read_line(&mut buf).unwrap();
     let target: usize = buf.trim().parse().unwrap();

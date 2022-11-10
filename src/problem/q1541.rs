@@ -1,7 +1,6 @@
 use std::io::stdin;
 
-#[allow(dead_code)]
-pub fn solve() {
+fn main() {
     let mut buf = String::new();
     stdin().read_line(&mut buf).unwrap();
     println!("{}", get_min(buf.trim()));

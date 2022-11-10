@@ -1,8 +1,7 @@
 use std::io::prelude::*;
 use std::io::{stdin, stdout, BufRead, BufReader, BufWriter};
 
-#[allow(dead_code)]
-pub fn solve() {
+fn main() {
     let stdin = stdin();
     let stdout = stdout();
     let mut reader = BufReader::new(stdin.lock());

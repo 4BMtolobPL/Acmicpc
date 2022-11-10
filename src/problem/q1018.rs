@@ -1,5 +1,4 @@
-#[allow(dead_code)]
-pub fn solve() {
+fn main() {
     let v: Vec<i32> = get_line()
         .split_whitespace()
         .map(|x| x.parse().unwrap())

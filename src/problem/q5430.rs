@@ -3,8 +3,7 @@ use std::{
     io::{stdin, stdout, BufWriter, Read, Write},
 };
 
-#[allow(dead_code)]
-pub fn solve() {
+fn main() {
     let mut buf = String::new();
     stdin().read_to_string(&mut buf).unwrap();
     let mut lines = buf.lines();
@@ -47,7 +46,16 @@ pub fn solve() {
         if is_error {
             writeln!(out, "error").unwrap();
         } else {
-            writeln!(out, "[{}]", if is_forward {Vec::from(arr).join(",")} else {arr.into_iter().rev().collect::<Vec<&str>>().join(",")}).unwrap();
+            writeln!(
+                out,
+                "[{}]",
+                if is_forward {
+                    Vec::from(arr).join(",")
+                } else {
+                    arr.into_iter().rev().collect::<Vec<&str>>().join(",")
+                }
+            )
+            .unwrap();
         }
     }
 }

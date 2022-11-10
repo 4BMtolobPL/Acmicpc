@@ -3,8 +3,7 @@ use std::{
     io::{stdin, Read},
 };
 
-#[allow(dead_code)]
-pub fn solve() {
+fn main() {
     let mut buf = String::new();
     stdin().read_line(&mut buf).unwrap();
 

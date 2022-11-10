@@ -3,8 +3,7 @@ use std::io::stdout;
 use std::io::BufWriter;
 use std::io::Write;
 
-#[allow(dead_code)]
-pub fn solve() {
+fn main() {
     let mut buf = String::new();
     stdin().read_line(&mut buf).unwrap();
     let m = buf.trim().parse().unwrap();

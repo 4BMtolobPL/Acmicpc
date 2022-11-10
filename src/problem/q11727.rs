@@ -1,7 +1,6 @@
 use std::io::stdin;
 
-#[allow(dead_code)]
-pub fn solve() {
+fn main() {
     let mut list = [0; 1001];
     list[1] = 1;
     list[2] = 3;

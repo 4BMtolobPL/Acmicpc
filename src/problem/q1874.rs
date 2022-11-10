@@ -1,11 +1,10 @@
 use std::io::{prelude::*, stdin};
 
-#[allow(dead_code)]
-pub fn solve() {
+fn main() {
     let mut buf = String::new();
     stdin().read_to_string(&mut buf).unwrap();
     let mut iter = buf.split_whitespace().map(|x| x.parse().unwrap());
-    
+
     let mut res = String::new();
     let n: i32 = iter.next().unwrap();
     let mut stack = Vec::new();

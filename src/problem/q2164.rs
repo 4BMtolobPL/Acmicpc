@@ -1,11 +1,10 @@
 use std::io::stdin;
 
-#[allow(dead_code)]
-pub fn solve() {
+fn main() {
     let mut buf = String::new();
     stdin().read_line(&mut buf).unwrap();
     let mut n: i32 = buf.trim().parse().unwrap();
-    
+
     if n.count_ones() > 1 {
         let s = format!("{:b}", n);
         let (_, a) = s.trim_start_matches('0').split_at(1);
