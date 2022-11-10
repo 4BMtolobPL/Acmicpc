@@ -1,5 +1,4 @@
-#[allow(dead_code)]
-pub fn solve() {
+fn main() {
     let mut line = get_line();
     while line != "0" {
         if is_palindrome(&line) {

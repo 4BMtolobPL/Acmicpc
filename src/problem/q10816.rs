@@ -1,7 +1,9 @@
-use std::{io::{stdin, Read}, collections::HashMap};
+use std::{
+    collections::HashMap,
+    io::{stdin, Read},
+};
 
-#[allow(dead_code)]
-pub fn solve() {
+fn main() {
     let mut buf = String::new();
     stdin().read_to_string(&mut buf).unwrap();
     let mut lines = buf.lines();
@@ -15,7 +17,7 @@ pub fn solve() {
         let counter = card_map.entry(i).or_insert(0);
         *counter += 1;
     }
-    
+
     let mut v = Vec::new();
     for i in targets.split_whitespace() {
         let r = match card_map.get(i) {

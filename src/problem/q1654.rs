@@ -1,8 +1,7 @@
 use std::io::prelude::*;
 // use std::{thread, time};
 
-#[allow(dead_code)]
-pub fn solve() {
+fn main() {
     let mut buf = String::new();
     std::io::stdin().read_to_string(&mut buf).unwrap();
     let lines: Vec<&str> = buf.split_whitespace().collect();
@@ -11,13 +10,13 @@ pub fn solve() {
     for line in lines.iter().skip(2) {
         nums.push(line.parse().unwrap());
     }
-    
+
     let sum: u64 = nums.iter().sum();
     let mut lhs: u64 = 1;
     let mut rhs: u64 = sum / n;
     while lhs <= rhs {
         let middle = (rhs + lhs) / 2;
-        
+
         let mut count = 0;
         for num in &nums {
             count += num / middle;

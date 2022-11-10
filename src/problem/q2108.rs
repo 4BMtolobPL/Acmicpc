@@ -1,10 +1,16 @@
-use std::{io::{stdin, Read}, collections::HashMap};
+use std::{
+    collections::HashMap,
+    io::{stdin, Read},
+};
 
-#[allow(dead_code)]
-pub fn solve() {
+fn main() {
     let mut buf = String::new();
     stdin().read_to_string(&mut buf).unwrap();
-    let mut numbers: Vec<i32> = buf.split_whitespace().skip(1).map(|x| x.parse().unwrap()).collect();
+    let mut numbers: Vec<i32> = buf
+        .split_whitespace()
+        .skip(1)
+        .map(|x| x.parse().unwrap())
+        .collect();
     numbers.sort();
 
     let sum: i32 = numbers.iter().sum();

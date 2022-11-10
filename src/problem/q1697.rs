@@ -4,8 +4,7 @@ use std::{
     io::{stdin, stdout, BufWriter},
 };
 
-#[allow(dead_code)]
-pub fn solve() {
+fn main() {
     let mut buf = String::new();
     stdin().read_line(&mut buf).unwrap();
     let mut iter = buf.split_whitespace().map(|x| x.parse().unwrap());

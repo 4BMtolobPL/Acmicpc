@@ -5,8 +5,7 @@ use std::{
     io::{stdin, stdout, BufWriter, Read},
 };
 
-#[allow(dead_code)]
-pub fn solve() {
+fn main() {
     let mut buf = String::new();
     stdin().read_to_string(&mut buf).unwrap();
     let v: Vec<u32> = buf

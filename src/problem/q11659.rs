@@ -1,8 +1,7 @@
 use std::io::Write;
 use std::io::{stdin, stdout, BufWriter, Read};
 
-#[allow(dead_code)]
-pub fn solve() {
+fn main() {
     let mut buf = String::new();
     stdin().read_to_string(&mut buf).unwrap();
     let mut lines = buf.lines().skip(1);

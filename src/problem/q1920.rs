@@ -1,14 +1,26 @@
-use std::{io::{prelude::*, stdin}, collections::HashSet};
+use std::{
+    collections::HashSet,
+    io::{prelude::*, stdin},
+};
 
-#[allow(dead_code)]
-pub fn solve() {
+fn main() {
     let mut buf = String::new();
     stdin().read_to_string(&mut buf).unwrap();
     let mut lines = buf.lines();
     lines.next();
-    let a: HashSet<i32> = lines.next().unwrap().split_whitespace().map(|x| x.parse().unwrap()).collect();
+    let a: HashSet<i32> = lines
+        .next()
+        .unwrap()
+        .split_whitespace()
+        .map(|x| x.parse().unwrap())
+        .collect();
     lines.next();
-    let v: Vec<i32>  = lines.next().unwrap().split_whitespace().map(|x| x.parse().unwrap()).collect();
+    let v: Vec<i32> = lines
+        .next()
+        .unwrap()
+        .split_whitespace()
+        .map(|x| x.parse().unwrap())
+        .collect();
 
     let mut out = String::new();
 

@@ -1,12 +1,19 @@
-use std::io::{stdin, Read};
 use std::fmt::Write;
+use std::io::{stdin, Read};
 
-#[allow(dead_code)]
-pub fn solve() {
+fn main() {
     let mut buf = String::new();
     stdin().read_to_string(&mut buf).unwrap();
-    let cases: Vec<Vec<i32>> = buf.lines().skip(1).map(|line| line.split_whitespace().map(|x| x.parse().unwrap()).collect()).collect();
-    
+    let cases: Vec<Vec<i32>> = buf
+        .lines()
+        .skip(1)
+        .map(|line| {
+            line.split_whitespace()
+                .map(|x| x.parse().unwrap())
+                .collect()
+        })
+        .collect();
+
     let mut out = String::new();
 
     for case in cases {
