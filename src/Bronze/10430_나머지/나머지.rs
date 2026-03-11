@@ -1,0 +1,12 @@
+use std::io;
+
+fn main() {
+    let mut buf = String::new();
+    io::stdin().read_line(&mut buf).unwrap();
+    let v: Vec<i32> = buf.split_whitespace().map(|x| x.parse().unwrap()).collect();
+
+    println!("{}", (v[0] + v[1]) % v[2]);
+    println!("{}", ((v[0] % v[2]) + (v[1] % v[2])) % v[2]);
+    println!("{}", (v[0] * v[1]) % v[2]);
+    println!("{}", ((v[0] % v[2]) * (v[1] % v[2])) % v[2]);
+}
